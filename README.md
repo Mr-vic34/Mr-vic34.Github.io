@@ -98,6 +98,247 @@ The **HR Dashboard** is a Power BI project designed to provide a **comprehensive
 ### preview:
 ![Bidash](Bidash.jpg)
 
+# Data Analytics Portfolio
 
+## Project 3: Sales Data Analysis Using Date Functions
+---
 
+## Project Overview
+---
+This project demonstrates the use of SQL Server date functions and aggregation techniques to analyze a Sales Dataset.
+It focuses on retrieving, grouping, and summarizing sales data using different date-based SQL queries to generate valuable business insights such as revenue trends, top customers, delivery performance, and order patterns.
 
+### Project Objectives
+
+-Practice SQL date functions using T-SQL.
+
+-Analyze sales performance by year, month, week, and day.
+
+-Calculate delivery times and track shipping delays.
+
+-Find top-performing products, customers, and regions.
+
+-Showcase data analysis skills using SQL.
+
+---
+## Tools & Technologies
+---
+SQL Server – Query execution and data analysis
+
+---
+
+## Table Name: SalesData$
+## Columns Used:
+
+-OrderID – Unique order identifier
+
+-Product – Name of the product
+
+-Quantity – Quantity ordered
+
+-UnitPrice – Price per unit
+
+-OrderDate – Date of the order
+
+-CustomerID – Unique customer identifier
+
+-Region – Sales region
+
+---
+## Key SQL Queries & Insights
+---
+
+---------------------------------------------------------------
+-- 1. Show all orders placed in 2024
+---------------------------------------------------------------
+- SELECT 
+- [OrderID],
+- [Product], 
+- [Quantity],
+- [OrderDate]
+- FROM [dbo].[SalesData$]
+- WHERE [OrderDate] BETWEEN '2024-01-01' AND '2024-12-31'
+- ORDER BY [OrderDate] DESC;
+
+---------------------------------------------------------------
+-- 2. Get the total sales for each year
+---------------------------------------------------------------
+- SELECT 
+-    FORMAT([OrderDate], 'yyyy') AS Year_,
+ -   SUM([Quantity] * [UnitPrice]) AS Total_Sales
+- FROM [dbo].[SalesData$]
+- GROUP BY FORMAT([OrderDate], 'yyyy')
+- ORDER BY Total_Sales DESC;
+
+---------------------------------------------------------------
+-- 3. Show total revenue grouped by month and year
+---------------------------------------------------------------
+- SELECT 
+-    FORMAT([OrderDate], 'yyyy-MM') AS Year_Month,
+-    SUM([Quantity] * [UnitPrice]) AS Total_Sales
+- FROM [dbo].[SalesData$]
+- GROUP BY FORMAT([OrderDate], 'yyyy-MM')
+- ORDER BY Total_Sales DESC;
+
+---------------------------------------------------------------
+-- 4. List all distinct years in the OrderDate column
+---------------------------------------------------------------
+- SELECT DISTINCT FORMAT([OrderDate], 'yyyy') AS Year_
+- FROM [dbo].[SalesData$];
+
+---------------------------------------------------------------
+-- 5. Show the top 5 months with the highest total sales
+---------------------------------------------------------------
+- SELECT TOP (5) 
+-    FORMAT([OrderDate], 'MMMM') AS Month_,
+-    SUM([Quantity] * [UnitPrice]) AS Total_Sales
+- FROM [dbo].[SalesData$]
+- GROUP BY FORMAT([OrderDate], 'MMMM')
+- ORDER BY Total_Sales DESC;
+
+---------------------------------------------------------------
+-- 6. Show all orders placed in the last 90 days
+---------------------------------------------------------------
+- SELECT *
+- FROM [dbo].[SalesData$]
+- WHERE [OrderDate] >= DATEADD(DAY, -90, GETDATE())
+- ORDER BY [OrderDate] DESC;
+
+---------------------------------------------------------------
+-- 7. Find the difference in days between OrderDate and ShippedDate
+---------------------------------------------------------------
+- SELECT 
+-    [OrderID],
+-    [OrderDate],
+-    [ShippedDate],
+-    DATEDIFF(DAY, [OrderDate], [ShippedDate]) AS Shipping_Period
+- FROM [dbo].[SalesData$];
+
+---------------------------------------------------------------
+-- 8. Get all orders where the ShippedDate is more than 5 days late
+---------------------------------------------------------------
+- SELECT 
+-    [OrderID],
+-    [OrderDate],
+-    [ShippedDate],
+-    DATEDIFF(DAY, [OrderDate], [ShippedDate]) AS Shipping_Period
+- FROM [dbo].[SalesData$]
+- WHERE DATEDIFF(DAY, [OrderDate], [ShippedDate]) > 5;
+
+---------------------------------------------------------------
+-- 9. Show the number of orders per quarter
+---------------------------------------------------------------
+- SELECT 
+- DATEPART(YEAR, [OrderDate]) AS OrderYear,
+- DATEPART(QUARTER, [OrderDate]) AS OrderQuarter,
+- COUNT(*) AS TotalOrders
+- FROM [dbo].[SalesData$]
+- GROUP BY DATEPART(YEAR, [OrderDate]), DATEPART(QUARTER, [OrderDate])
+- ORDER BY OrderYear, OrderQuarter;
+
+---------------------------------------------------------------
+-- 10. Display all orders placed on a Monday
+---------------------------------------------------------------
+- SELECT 
+-    [OrderID],
+-    [Customer],
+-   [Product],
+-    [Quantity],
+-    FORMAT([OrderDate], 'dddd') AS Order_Day
+- FROM [dbo].[SalesData$]
+- WHERE DATENAME(WEEKDAY, [OrderDate]) = 'Monday';
+
+---------------------------------------------------------------
+-- 11. Get the names of customers who placed orders in December 2023
+---------------------------------------------------------------
+- SELECT 
+-  [Customer],
+-    [OrderDate]
+- FROM [dbo].[SalesData$]
+- WHERE [OrderDate] BETWEEN '2023-12-01' AND '2023-12-31'
+- ORDER BY [OrderDate] DESC;
+
+---------------------------------------------------------------
+-- 12. Find the earliest and latest OrderDate
+---------------------------------------------------------------
+- SELECT
+-    MAX(FORMAT([OrderDate], 'yyyy-MM-dd')) AS Max_Date,
+-    MIN(FORMAT([OrderDate], 'yyyy-MM-dd')) AS Min_Date
+- FROM [dbo].[SalesData$];
+
+---------------------------------------------------------------
+-- 13. Get total quantity sold for each product in 2025 only
+---------------------------------------------------------------
+- SELECT 
+-    YEAR([OrderDate]) AS Year_,
+-    [Product],
+-    SUM([Quantity]) AS Total_Qty
+- FROM [dbo].[SalesData$]
+- WHERE YEAR([OrderDate]) = 2025
+- GROUP BY [Product], YEAR([OrderDate])
+- ORDER BY Total_Qty DESC;
+
+---------------------------------------------------------------
+-- 14. Show total revenue grouped by week of the year
+---------------------------------------------------------------
+- SELECT 
+-    DATEPART(YEAR, [OrderDate]) AS Year_,
+-    DATEPART(WEEK, [OrderDate]) AS Week_,
+-    SUM([Quantity] * [UnitPrice]) AS Total_Revenue
+- FROM [dbo].[SalesData$]
+- GROUP BY DATEPART(YEAR, [OrderDate]), DATEPART(WEEK, [OrderDate])
+- ORDER BY Total_Revenue DESC;
+
+---------------------------------------------------------------
+-- 15. List all orders where OrderDate equals today's date
+---------------------------------------------------------------
+- SELECT *
+- FROM [dbo].[SalesData$]
+- WHERE CAST([OrderDate] AS DATE) = CAST(GETDATE() AS DATE);
+
+---------------------------------------------------------------
+-- 16. Display average delivery time (ShippedDate - OrderDate) per region
+---------------------------------------------------------------
+- SELECT 
+-    [Region],
+-    AVG(DATEDIFF(DAY, [OrderDate], [ShippedDate])) AS Avg_Delivery_Days
+- FROM [dbo].[SalesData$]
+- WHERE [ShippedDate] IS NOT NULL
+- GROUP BY [Region]
+- ORDER BY Avg_Delivery_Days ASC;
+
+---------------------------------------------------------------
+-- 17. Show the last 10 orders based on OrderDate
+---------------------------------------------------------------
+- SELECT TOP (10) *
+- FROM [dbo].[SalesData$]
+- ORDER BY [OrderDate] DESC;
+
+---------------------------------------------------------------
+-- 18. Get total sales for the current month only
+---------------------------------------------------------------
+- SELECT  
+-    SUM([Quantity] * [UnitPrice]) AS Total_Sales,
+-    DATEPART(MONTH, GETDATE()) AS Current_Month
+- FROM [dbo].[SalesData$]
+- WHERE DATEPART(MONTH, [OrderDate]) = DATEPART(MONTH, GETDATE())
+-   AND DATEPART(YEAR, [OrderDate]) = DATEPART(YEAR, GETDATE());
+
+---------------------------------------------------------------
+-- 19. Count the number of weekend orders (Saturday & Sunday)
+---------------------------------------------------------------
+- SELECT 
+-    COUNT(*) AS Weekend_Orders
+- FROM [dbo].[SalesData$]
+- WHERE DATENAME(WEEKDAY, [OrderDate]) IN ('Saturday', 'Sunday');
+
+---------------------------------------------------------------
+-- 20. Show the top 5 customers by total revenue in 2024
+---------------------------------------------------------------
+- SELECT TOP (5) 
+-    [Customer],
+-    SUM([Quantity] * [UnitPrice]) AS Total_Revenue
+- FROM [dbo].[SalesData$]
+- WHERE YEAR([OrderDate]) = 2024
+- GROUP BY [Customer]
+- ORDER BY Total_Revenue DESC;
