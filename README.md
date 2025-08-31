@@ -16,16 +16,16 @@
 ---
 
 ### Project Description:
-This project focuses on building a comprehensive **Sales Dashboard** in Excel to visualize and analyze the sales performance of a retail business. The dashboard provides an **interactive interface** to track revenue, orders, delivery times, and top-performing customers across regions, product categories, and customer segments. This enables decision-makers to **gain actionable insights quickly**.
+This project focuses on building a comprehensive Sales Dashboard in Excel to visualize and analyze the sales performance of a retail business. The dashboard provides an interactive interface to track revenue, orders, delivery times, and top-performing customers across regions, product categories, and customer segments. This enables decision-makers to gain actionable insights quickly.
 
 ---
 
 ### Key Findings:
-- **Revenue Trends:** Monthly revenue shows fluctuations with peaks in mid-year, indicating **seasonal variations**.  
+- **Revenue Trends:** Monthly revenue shows fluctuations with peaks in mid-year, indicating seasonal variations.  
 - **Regional Performance:** South and North regions generate the highest revenue; East and West contribute less.  
 - **Product Insights:** Clothing and Electronics are the top-selling categories, followed by Furniture.  
-- **Customer Impact:** Top 10 customers contribute significantly to total revenue, highlighting **key clients for targeted engagement**.  
-- **Operational Insights:** Average delivery days are around **7.5**, providing insights into logistics efficiency.
+- **Customer Impact:** Top 10 customers contribute significantly to total revenue, highlighting key clients for targeted engagement.  
+- **Operational Insights:** Average delivery days are around 7.5, providing insights into logistics efficiency.
 
 ---
 ###  Preview
@@ -40,8 +40,12 @@ This project focuses on building a comprehensive **Sales Dashboard** in Excel to
   - Bar chart for total revenue by region  
   - Donut chart for total sales by product category  
   - Horizontal bar chart for top 10 customers by revenue  
+
 ---
-The dashboard uses a **clean, pastel color scheme** for clarity and readability, with **icons and images** to enhance comprehension of key insights.
+
+The dashboard uses a clean, pastel color scheme for clarity and readability, with icons and images to enhance 
+comprehension of key insights.
+
 ---
 
 ### Repository Structure :
@@ -69,7 +73,7 @@ The dashboard uses a **clean, pastel color scheme** for clarity and readability,
 ---
 
 ### Project Description:
-The **HR Dashboard** is a Power BI project designed to provide a **comprehensive overview of employee statistics and HR metrics** within an organization. The dashboard allows HR managers and decision-makers to **track workforce composition, promotion eligibility, service years, job levels, and employee distance status** at a glance. Interactive elements enable users to filter and analyze data dynamically, facilitating actionable insights for workforce planning and operational decisions.
+The HR Dashboard is a Power BI project designed to provide a comprehensive overview of employee statistics and HR metrics within an organization. The dashboard allows HR managers and decision-makers to track workforce composition, promotion eligibility, service years, job levels, and employee distance status at a glance. Interactive elements enable users to filter and analyze data dynamically, facilitating actionable insights for workforce planning and operational decisions.
 
 ---
 
@@ -110,7 +114,7 @@ It focuses on retrieving, grouping, and summarizing sales data using different d
 
 ### Project Objectives
 
--Practice SQL date functions using T-SQL.
+-Practice SQL date functions.
 
 -Analyze sales performance by year, month, week, and day.
 
