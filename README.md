@@ -59,7 +59,7 @@ comprehension of key insights.
 
 # Data Analytics Portfolio
 
-## Project 2: HR Dashboard
+## Project 2: [HR Dashboard](https://github.com/Mr-vic34/Mr-vic34.Github.io/blob/main/POWER%20BI%20DASH%20BOARD%20PROJECT.pbix)
 
 ### Tools Used:
 - **Power BI**  
@@ -104,7 +104,7 @@ The HR Dashboard is a Power BI project designed to provide a comprehensive overv
 
 # Data Analytics Portfolio
 
-## Project 3: Sales Data Analysis Using Date Functions
+## Project 3: Sales Data Analysis Using Date Functions  
 ---
 
 ## Project Overview
@@ -346,3 +346,144 @@ SQL Server – Query execution and data analysis
 - WHERE YEAR([OrderDate]) = 2024
 - GROUP BY [Customer]
 - ORDER BY Total_Revenue DESC;
+
+# [2024 Olympics Power BI Dashboard](https://github.com/Mr-vic34/Mr-vic34.Github.io/blob/main/olympics%20dash%20board.pbix)
+
+## Project 4
+This project presents a comprehensive Power BI dashboard analyzing the 2024 Olympics dataset.  
+It provides insights into athlete performances, medal distributions, country rankings, event schedules, and venue-level statistics.  
+The dashboard is fully interactive and designed to make data exploration simple, engaging, and insightful.
+
+---
+
+##  Objectives
+- Analyze medal distribution by country, gender, discipline, and event.
+- Track medal trends over time and identify performance peaks.
+- Provide athlete-level insights and country-wise achievements.
+- Visualize venue-level contributions and event scheduling.
+
+---
+
+##  Tools & Technologies Used
+- **Power BI** → For interactive data visualization & dashboard creation  
+- **Power Query** → For data cleaning and transformation  
+- **Excel / CSV** → Source dataset storage  
+- **DAX (Data Analysis Expressions)** → For calculated KPIs and measures  
+
+---
+
+##  Dashboard Pages & Insights 
+
+### ** Overview Dashboard**
+> A high-level view of medal distributions and country rankings.
+-  **Total Medals:** Displays gold, silver, bronze, and overall medal counts.
+- **Total Medals by Country:** Top-performing countries visualized in a bar chart.
+- **Medal Trend Over Time:** Line chart showing medal progression daily.
+- **Total Medals by Gender:** Comparison between male and female athletes.
+- **Total Medals by Disciplines:** Treemap visualization of medals across different sports.
+
+---
+
+### ** Country & Athlete Insights**
+> Deep dive into athlete and country-level performance.
+-  **Total Athletes:** Participating athletes per country.
+-  **Country-Level Performance:** Interactive map showing medal distribution globally.
+- **Medal Type by Country:** Stacked bar chart for gold, silver, and bronze medals.
+-  **Medal Count per Athlete:** Highlights top-performing athletes.
+-  **Event Filter:** Drill-down into specific events for detailed insights.
+
+---
+
+### ** Event & Schedule Insights**
+> Focused analysis of events, venues, and timelines.
+- **Total Medals by Event:** Medals won by event and gender category.
+- **Medal Distribution by Date:** Line chart showing daily medal allocations.
+- **Total Medals by Venue:** Donut chart visualizing medals per stadium/venue.
+- **Event Schedule Table:** Displays event name, start time, end time, and discipline.
+
+---
+
+## Key Features
+- Fully interactive and user-friendly dashboard
+- Athlete-level and country-level drill-down insights
+- Medal trend tracking by date, gender, and event
+- Venue-wise medal distribution analysis
+- Interactive event schedule insights  
+
+---
+
+##  Dataset Information
+- **Source:** Custom-prepared 2024 Olympics dataset  
+- **Tables Used:**
+  - `Medals` → Medal counts per country, athlete, and event
+  - `Athletes` → Athlete demographics and participation
+  - `Events` → Event schedules and disciplines
+  - `Venues` → Venue-level information and medal counts
+  - `Countries` → Country details and region mappings
+
+---
+
+##  Key Insights
+- **Top Performing Country:** 🇨🇳 China leads in total medals.
+- **Gender Comparison:** Medals are evenly split** between men and women.
+- **Peak Medal Days:** Highest medal counts recorded 8th–10th August.
+- **Dominant Disciplines:** Athletics, Swimming, Football, and Basketball dominate medal tables.
+- **Venue Insights:** Stade de France recorded the highest medal events.
+- --
+##  Dashboard Previews
+
+###  Overview Dashboard
+![olympic](olympic.jpg)
+
+---
+
+###  Country & Athlete Insights
+![olympicc](olympicc.jpg)
+
+---
+
+###  Event & Schedule Insights
+![olympiccc](olympiccc.jpg)
+
+---
+##  DAX Measures Used
+Some custom DAX measures created for deeper insights:
+
+
+## Total Medals
+Total Medals = COUNTROWS('medals')
+
+## Gold Medals
+Gold Medals = CALCULATE(COUNTROWS('medals'), 'medals'[medal_type] = "Gold Medal")
+
+## Silver Medals
+Silver Medals = CALCULATE(COUNTROWS('medals'), 'medals'[medal_type] = "Silver Medal")
+
+## Bronze Medals
+Bronze Medals = CALCULATE(COUNTROWS('medals'), 'medals'[medal_type] = "Bronze Medal")
+
+## Medal Trend Over Time
+Medal Trend = CALCULATE(COUNTROWS('medals'), DATESYTD('medals'[medal_date]))
+Color Theme
+To keep the dashboard visually clean and consistent, I used:
+
+Medal Type	Color
+Gold Medal	#FFD700
+Silver Medal	#C0C0C0
+Bronze Medal	#CD7F32
+
+---
+
+##  Conclusion
+The 2024 Olympics Power BI Dashboard  provides a clear, interactive, and data-driven view of Olympic performances.  
+It simplifies complex datasets into actionable insights and allows users to explore country, athlete, and event-level statistics effortlessly.
+
+---
+
+## Contact
+**Author:**  Mr vics  
+**Email:** Omokhomiono@gmail.com 
+[LinkedIn Profile](https://www.linkedin.com/in/osalumese-omokhomion-93a738290/)  
+[GitHub Profile](Mr-vic34.Github.io )
+
+
